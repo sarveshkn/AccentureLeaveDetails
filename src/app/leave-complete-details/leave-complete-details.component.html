@@ -1,0 +1,20 @@
+<div *ngIf="employee">
+    <h2>{{ employee.name | uppercase }} Details</h2>
+<div>
+  <label>name: {{ employee.name }}</label>
+  <br>
+  <label>company: {{ employee.company }}</label>
+  <label>startDate:
+    <input type="date" [(ngModel)]="employee.leaveDetails.startDate" placeholder="startDate">
+  </label>
+  <label>endDate:
+      <input type="date" [(ngModel)]="employee.leaveDetails.endDate" placeholder="endDate">
+    </label>
+    <label>reason:
+        <textarea [(ngModel)]="employee.leaveDetails.reason" placeholder="reason"></textarea>
+      </label>
+  <button (click)="addLeave()">Add</button>
+  <a routerLink="/leaveList">Back</a>
+</div>
+</div>
+

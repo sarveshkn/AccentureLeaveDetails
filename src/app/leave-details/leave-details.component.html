@@ -1,0 +1,18 @@
+<h2>My Hello Heroes</h2>
+<div>
+  <table *ngFor="let emp of employeess">
+    <tr>
+      <td>
+        {{emp.name}}
+      </td>
+    </tr>
+
+  </table>
+<ul class="heroes">
+<li *ngFor="let emp of employeess" (click)="onSelect(emp)" [class.selected]="emp === selectedEmployee">
+        <a routerLink="/leave-complete-detail/{{emp._id}}"><span class="badge"></span> {{emp.name}}</a>
+        <label> {{emp.company}} </label>
+        <label> {{emp.experiance}} </label>
+      </li>
+</ul>
+    
