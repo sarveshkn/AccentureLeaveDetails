@@ -13,7 +13,7 @@ import { LeavesDetails } from '../LeavesDetails';
 })
 export class LeaveCompleteDetailsComponent implements OnInit {
 
-  employee: EmployeeDetails;
+  @Input() employee: EmployeeDetails;
 
   leavesDetails : LeavesDetails;
 
@@ -33,13 +33,14 @@ export class LeaveCompleteDetailsComponent implements OnInit {
     console.log("id is " + this.id);
     this.employeeService.getEmployee(this.id)
       .subscribe(employee => this.employee = employee);
-      console.log("employee name " + this.employee);
+      console.log("employee name " + JSON.stringify(this.employee));
       this.employee.leaveDetails = new LeavesDetails();
   }
 
   public addLeave() : void {
     console.log("Reached leaveComponent addLeave method" + this.employee.leaveDetails.startDate);
-    this.employeeService.addLeaves(this.employee).subscribe();
+    this.employeeService.addLeaves(this.employee).subscribe(leavesDetails => { this.employee.existingLeaveDetails.push(leavesDetails) });
+    console.log("After addition " + JSON.stringify(this.employee.existingLeaveDetails));
   }
 
 }

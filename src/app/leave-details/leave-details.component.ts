@@ -23,6 +23,7 @@ export class LeaveDetailsComponent implements OnInit {
 
   getEmployeess(): void {
     this.employeeService.getEmployees().subscribe(employeess => this.employeess = employeess);
+    console.log("new employlee list details " + JSON.stringify(this.employeess));
   }
 
   onSelect(employee : EmployeeDetails) : void  {

@@ -6,4 +6,5 @@ export class EmployeeDetails {
     company: string;
     experiance: number;
     leaveDetails: LeavesDetails;
+    existingLeaveDetails : LeavesDetails[];
 }

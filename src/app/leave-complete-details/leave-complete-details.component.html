@@ -1,17 +1,35 @@
 <div *ngIf="employee">
     <h2>{{ employee.name | uppercase }} Details</h2>
+<label style="align-content: center">Leave Details History</label>
+<br/>
+<br />
+<table item-width="100%" align="center" style="align-content: center; scroll-behavior: auto" item-height="50%">
+  <tr>
+    <th style="padding: 0.8em 0.7em 0 0.7em">
+      StartDate
+    </th>
+    <th style="padding: 0.8em 0.7em 0 0.7em">
+      Enddate
+    </th>
+  </tr>
+  <tr *ngFor="let leaveDetails of employee.existingLeaveDetails">
+    <td style="padding: 0.8em 0.7em 0 0.7em">
+      {{leaveDetails.startDate | date}}
+    </td>
+    <td style="padding: 0.8em 0.7em 0 0.7em">
+      {{leaveDetails.endDate | date }}
+    </td>
+  </tr>
+</table>
 <div>
-  <label>name: {{ employee.name }}</label>
-  <br>
-  <label>company: {{ employee.company }}</label>
-  <label>startDate:
+  <label>StartDate:
     <input type="date" [(ngModel)]="employee.leaveDetails.startDate" placeholder="startDate">
   </label>
-  <label>endDate:
-      <input type="date" [(ngModel)]="employee.leaveDetails.endDate" placeholder="endDate">
+  <label>EndDate:
+      <input type="date" required [(ngModel)]="employee.leaveDetails.endDate" placeholder="endDate">
     </label>
-    <label>reason:
-        <textarea [(ngModel)]="employee.leaveDetails.reason" placeholder="reason"></textarea>
+    <label>Reason:
+        <textarea required [(ngModel)]="employee.leaveDetails.reason" placeholder="reason"></textarea>
       </label>
   <button (click)="addLeave()">Add</button>
   <a routerLink="/leaveList">Back</a>
